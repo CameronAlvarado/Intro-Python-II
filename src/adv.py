@@ -25,7 +25,7 @@ earlier adventurers. The only exit is to the south."""),
 
 # Link rooms together
 
-room['outside'].n_to = room['foyer']
+room['outside'].n_to = room['foyer'] # remove player from outside
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
 room['foyer'].e_to = room['narrow']
@@ -43,27 +43,37 @@ def process_choices(move):
 		return 's'
 	elif move == 'e':
 		return 'e'
-	else:
+	elif move == 'w':
 		return 'w'
+	elif move == 'q':
+		return 'q'
+	else:
+		return 'x'
 
 # Choices
-choices = ["n", "s", "e", "w"]
+choices = ["n", "s", "e", "w", "q"]
 
-cmd = input("Which way? -> ")
-if cmd in choices:
-	res = process_choices(cmd)
-	if res == 'n':
-		print("North")
-	elif res == 's':
-		print("South")
-	elif res == 'e':
-		print("East")
-	elif res == 'w':
-		print("West")
-else:
-	print("Error.")
+while True:
+	print(Room("name goes here", "description goes here"))
+	cmd = input("Which way? -> ")
+	if cmd in choices:
+		res = process_choices(cmd)
+		if res == 'n':
+			print("North")
+		elif res == 's':
+			print("South")
+		elif res == 'e':
+			print("East")
+		elif res == 'w':
+			print("West")
+		elif res == 'q':
+			break
+	else:
+		print("Error.")
 
 # process()
+
+player1 = Player('Cameron', 'outside')
 
 # Make a new player object that is currently in the 'outside' room.
 
