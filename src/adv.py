@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -33,9 +34,36 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
 # Main
-#
+
+def process_choices(move):
+	if move == 'n':
+		return 'n'
+	elif move =='s':
+		return 's'
+	elif move == 'e':
+		return 'e'
+	else:
+		return 'w'
+
+# Choices
+choices = ["n", "s", "e", "w"]
+
+cmd = input("Which way? -> ")
+if cmd in choices:
+	res = process_choices(cmd)
+	if res == 'n':
+		print("North")
+	elif res == 's':
+		print("South")
+	elif res == 'e':
+		print("East")
+	elif res == 'w':
+		print("West")
+else:
+	print("Error.")
+
+# process()
 
 # Make a new player object that is currently in the 'outside' room.
 
