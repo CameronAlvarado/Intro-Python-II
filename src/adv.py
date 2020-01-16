@@ -39,6 +39,9 @@ room['treasure'].s_to = room['narrow']
 # Choices
 choices = ["n", "s", "e", "w", "q"]
 
+# Instantiate Item for player
+item1 = Item('Precious Gem', 'The stone glistens as you rotate it in your hand.')
+
 # Instantiate Player
 player1 = Player('Cameron', room['outside'])
 name = player1.get_name()
@@ -57,7 +60,7 @@ print(f'Hello, {name}. Welcome to the maze. Type n, s, e, w to move. q to quit')
 while True:
 	print(f"You are currently in: {player1.location.name}. {player1.location.description}")
 	print()
-	res = input("Which way? -> ")
+	res = input("Which way? ~~> ")
 	if res in choices:
 		if res == 'n':
 			if hasattr(player1.location, 'n_to'):
