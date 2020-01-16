@@ -36,36 +36,38 @@ room['treasure'].s_to = room['narrow']
 
 # Main
 
-def process_choices(move):
-	if move == 'n':
-		return 'n'
-	elif move =='s':
-		return 's'
-	elif move == 'e':
-		return 'e'
-	elif move == 'w':
-		return 'w'
-	elif move == 'q':
-		return 'q'
-	else:
-		return 'x'
-
 # Choices
 choices = ["n", "s", "e", "w", "q"]
 
+player1 = Player('Cameron', room['outside'])
+name = player1.get_name()
+
+print(f'Hello, {name}')
+
 while True:
-	print(Room("name goes here", "description goes here"))
-	cmd = input("Which way? -> ")
-	if cmd in choices:
-		res = process_choices(cmd)
+	print(f"You are currently in: {player1.location.name}. {player1.location.description}")
+	res = input("Which way? -> ")
+	if res in choices:
 		if res == 'n':
-			print("North")
+			if hasattr(player1.location, 'n_to'):
+				player1.location = player1.location.n_to
+			else:
+				print("You can't go that way.")
 		elif res == 's':
-			print("South")
+			if hasattr(player1.location, 's_to'):
+				player1.location = player1.location.s_to
+			else:
+				print("You can't go that way.")
 		elif res == 'e':
-			print("East")
+			if hasattr(player1.location, 'e_to'):
+				player1.location = player1.location.e_to
+			else:
+				print("You can't go that way.")
 		elif res == 'w':
-			print("West")
+			if hasattr(player1.location, 'w_to'):
+				player1.location = player1.location.w_to
+			else:
+				print("You can't go that way.")
 		elif res == 'q':
 			break
 	else:
@@ -73,7 +75,6 @@ while True:
 
 # process()
 
-player1 = Player('Cameron', 'outside')
 
 # Make a new player object that is currently in the 'outside' room.
 
