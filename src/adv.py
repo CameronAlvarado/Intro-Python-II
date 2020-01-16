@@ -56,6 +56,7 @@ print(f'Hello, {name}. Welcome to the maze. Type n, s, e, w to move. q to quit')
 # Loop
 while True:
 	print(f"You are currently in: {player1.location.name}. {player1.location.description}")
+	print()
 	res = input("Which way? -> ")
 	if res in choices:
 		if res == 'n':
@@ -96,7 +97,9 @@ while True:
 			print()
 			break
 	else:
+		print_spaces()
 		print("You can only enter the commands n, s, e, w, and q.")
+		print()
 
 # Make a new player object that is currently in the 'outside' room.
 
