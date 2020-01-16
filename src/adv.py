@@ -39,42 +39,64 @@ room['treasure'].s_to = room['narrow']
 # Choices
 choices = ["n", "s", "e", "w", "q"]
 
+# Instantiate Player
 player1 = Player('Cameron', room['outside'])
 name = player1.get_name()
 
-print(f'Hello, {name}')
+def print_spaces():
+	for x in range(0, 50):
+		print()
 
+# Clear Terminal
+print_spaces()
+
+# Run Intro
+print(f'Hello, {name}. Welcome to the maze. Type n, s, e, w to move. q to quit')
+
+# Loop
 while True:
 	print(f"You are currently in: {player1.location.name}. {player1.location.description}")
 	res = input("Which way? -> ")
 	if res in choices:
 		if res == 'n':
 			if hasattr(player1.location, 'n_to'):
+				print_spaces()
 				player1.location = player1.location.n_to
 			else:
+				print_spaces()
 				print("You can't go that way.")
+				print()
 		elif res == 's':
 			if hasattr(player1.location, 's_to'):
+				print_spaces()
 				player1.location = player1.location.s_to
 			else:
+				print_spaces()
 				print("You can't go that way.")
+				print()
 		elif res == 'e':
 			if hasattr(player1.location, 'e_to'):
+				print_spaces()
 				player1.location = player1.location.e_to
 			else:
+				print_spaces()
 				print("You can't go that way.")
+				print()
 		elif res == 'w':
 			if hasattr(player1.location, 'w_to'):
+				print_spaces()
 				player1.location = player1.location.w_to
 			else:
+				print_spaces()
 				print("You can't go that way.")
+				print()
 		elif res == 'q':
+			print()
+			print("Thank you for playing")
+			print()
 			break
 	else:
-		print("Error.")
-
-# process()
-
+		print("You can only enter the commands n, s, e, w, and q.")
 
 # Make a new player object that is currently in the 'outside' room.
 

@@ -10,4 +10,4 @@ class Room:
 	def __repr__(self):
 		return print("You are in room: {name}. {description}")
 	# def __str__(self):
-	# 	return ', '.join(['{key}= {value}'.format(key=key, value=self.__dict__.get(key)) for key in self.__dict__])
+	# 	return f"{self.name}n/n/{self.description}"
