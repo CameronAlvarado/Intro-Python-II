@@ -8,7 +8,7 @@ class Room:
 		self.name = name
 		self.description = description
 		self.player_list = []
-		self.items = []
+		self.item_list = []
 	# def print_players(self):
 	# 	print(self.player_list)
 	def return_room(self):

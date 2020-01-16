@@ -41,8 +41,8 @@ room['treasure'].s_to = room['narrow']
 
 # Link items to rooms
 
-room['overlook'].contains_item = item['gem']
-room['treasure'].contains_item = item['bomb']
+room['overlook'].item_list.append(item['gem'])
+room['treasure'].item_list.append(item['bomb'])
 
 # Main
 
@@ -85,11 +85,12 @@ while True:
 	choices = ["n", "s", "e", "w", "q", "i"]
 	print(player1.current_room.return_room())
 	print()
-	if player1.current_room.items is True:
-		print(f'This room contains: {player1.current_room.items}')
+	if len(player1.current_room.item_list) is not 0:
+		print(f'This room contains: {player1.current_room.item_list}')
 		print()
 	else:
 		None
+	# print(player1.current_room.item_list)
 	res = input("Which way? ~~> ")
 	if res in choices:
 		if res == 'i':
@@ -99,9 +100,9 @@ while True:
 		if res == 'n':
 			if hasattr(player1.current_room, 'n_to'):
 				print_spaces()
-				# room[player1.current_room].player_list.remove(player1)
+				player1.current_room.player_list.remove(player1)
 				player1.current_room = player1.current_room.n_to
-				# room[player1.current_room].player_list.append(player1)
+				player1.current_room.player_list.append(player1)
 			else:
 				print_spaces()
 				print("You can't go that way.")
@@ -109,9 +110,9 @@ while True:
 		elif res == 's':
 			if hasattr(player1.current_room, 's_to'):
 				print_spaces()
-				# room[player1.current_room].player_list.remove(player1)
+				player1.current_room.player_list.remove(player1)
 				player1.current_room = player1.current_room.s_to
-				# room[player1.current_room].player_list.append(player1)
+				player1.current_room.player_list.append(player1)
 			else:
 				print_spaces()
 				print("You can't go that way.")
@@ -119,9 +120,9 @@ while True:
 		elif res == 'e':
 			if hasattr(player1.current_room, 'e_to'):
 				print_spaces()
-				# room[player1.current_room].player_list.remove(player1)
+				player1.current_room.player_list.remove(player1)
 				player1.current_room = player1.current_room.e_to
-				# room[player1.current_room].player_list.appens(player1)
+				player1.current_room.player_list.append(player1)
 			else:
 				print_spaces()
 				print("You can't go that way.")
@@ -129,9 +130,9 @@ while True:
 		elif res == 'w':
 			if hasattr(player1.current_room, 'w_to'):
 				print_spaces()
-				# room[player1.current_room].player_list.remove(player1)
+				player1.current_room.player_list.remove(player1)
 				player1.current_room = player1.current_room.w_to
-				# room[player1.current_room].player_list.append(player1)
+				player1.current_room.player_list.append(player1)
 			else:
 				print_spaces()
 				print("You can't go that way.")
