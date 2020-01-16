@@ -7,10 +7,11 @@ class Room:
 	def __init__(self, name, description):
 		self.name = name
 		self.description = description
+		self.player_list = []
 		self.items = []
-	def print_players(self):
-		print(self.players)
+	# def print_players(self):
+	# 	print(self.player_list)
+	def return_room(self):
+		return f"You are in the {self.name}. {self.description}"
 	# def __repr__(self):
-	# 	return print("You are in room: {name}. {description}")
-	# def __str__(self):
-	# 	return f"{self.name}n/n/{self.description}"
+	# 	return self.get()
