@@ -8,6 +8,10 @@ class Player:
 		self.items = []
 	def get_name(self):
 		return self.name
+	def get_item(self, item):
+		return self.items.append(item)
+	def drop_item(self, item):
+		return self.items.remove(item)
 	def __repr__(self):
 		return f"{self.name}, {self.current_room}"
 

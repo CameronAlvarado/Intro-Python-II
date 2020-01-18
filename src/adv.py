@@ -46,13 +46,10 @@ room['treasure'].item_list.append(item['bomb'])
 
 # Main
 
-# Instantiate Player
+# Instantiate Player and Room
 
 player1 = Player('Cameron', room['outside'])
 player1.items.append(item['match'])
-
-# Instantaite Player in Room
-
 room['outside'].player_list.append(player1)
 
 # Formatting text
@@ -76,13 +73,14 @@ def listToString(s):
 print_spaces()
 
 # Run Intro
-print(f'Hello, {player1.name}. Welcome to the maze. Type n, s, e, w to move. q to quit')
+print(f'Hello, {player1.name}. Welcome to the maze. Type w, a, s, d to move. x to quit. e to pick up. q to drop')
 print()
 
 # Loop
 while True:
 	# Choices
-	choices = ["n", "s", "e", "w", "q", "i"]
+	choices = ["w", "a", "s", "d", "q", "i", "x", "q", "e"]
+
 	print(player1.current_room.return_room())
 	print()
 	if len(player1.current_room.item_list) is not 0:
@@ -90,14 +88,39 @@ while True:
 		print()
 	else:
 		None
-	# print(player1.current_room.item_list)
+
+	room_item = player1.current_room.item_list
+	player_item = player1.items
+
+	room = player1.current_room
+
 	res = input("Which way? ~~> ")
 	if res in choices:
+		if res == 'e':
+			if len(room.item_list) is not 0:
+				player1.get_item(room_item[0])
+				room.remove_item(room_item[0])
+				print_spaces()
+				print(f"You picked up a {player_item[0]}.")
+				print()
+			else:
+				print("There are no items here.")
+		if res == 'q':
+			if len(player1.items) is not 0:
+				room.add_item(player_item[0])
+				player1.drop_item(player_item[0])
+				print_spaces()
+				print(f"You dropped a {room_item[0].name}.")
+				print()
+			else:
+				print_spaces()
+				print("You have no items to drop.")
+				print()
 		if res == 'i':
 			print_spaces()
 			print(f"Your items include: {player1.items}")
 			print()
-		if res == 'n':
+		if res == 'w':
 			if hasattr(player1.current_room, 'n_to'):
 				print_spaces()
 				player1.current_room.player_list.remove(player1)
@@ -117,7 +140,7 @@ while True:
 				print_spaces()
 				print("You can't go that way.")
 				print()
-		elif res == 'e':
+		elif res == 'd':
 			if hasattr(player1.current_room, 'e_to'):
 				print_spaces()
 				player1.current_room.player_list.remove(player1)
@@ -127,7 +150,7 @@ while True:
 				print_spaces()
 				print("You can't go that way.")
 				print()
-		elif res == 'w':
+		elif res == 'a':
 			if hasattr(player1.current_room, 'w_to'):
 				print_spaces()
 				player1.current_room.player_list.remove(player1)
@@ -137,7 +160,7 @@ while True:
 				print_spaces()
 				print("You can't go that way.")
 				print()
-		elif res == 'q':
+		elif res == 'x':
 			print_spaces()
 			print("Thank you for playing")
 			print()
