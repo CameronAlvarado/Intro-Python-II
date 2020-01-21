@@ -57,7 +57,6 @@ room['outside'].player_list.append(player1)
 def print_spaces():
 	for x in range(0, 50):
 		print()
-
 def listToString(s):  
     
     # initialize an empty string 
@@ -70,10 +69,9 @@ def listToString(s):
     # return string   
     return str1  
 
-print_spaces()
-
 # Run Intro
-print(f'Hello, {player1.name}. Welcome to the maze. Type w, a, s, d to move. x to quit. e to pick up. q to drop')
+print_spaces()
+print(f'Hello, {player1.name}. Welcome to the maze. Type w, a, s, d to move. i for inventory. e to pick up. q to drop. x to quit')
 print()
 
 # Loop
@@ -167,7 +165,7 @@ while True:
 			break
 	else:
 		print_spaces()
-		print("You can only enter the commands n, s, e, w, and q.")
+		print("You can only enter the commands w, a, s, d, e, q, i and x.")
 		print()
 
 # Make a new player object that is currently in the 'outside' room.
